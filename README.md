@@ -1,4 +1,3 @@
-# TimeSeriesForecastingforBWutilization
 ```python
 import numpy as np
 import pandas as pd
@@ -10,7 +9,7 @@ simplefilter("ignore")
 
 
 ```python
-df=pd.read_csv('LinkUtilizationDataSet.csv')
+df=pd.read_csv('DailyTraffic.csv')
 ```
 
 
@@ -28,34 +27,34 @@ df.head()
     <tr style="text-align: right;">
       <th></th>
       <th>Time</th>
-      <th>Max_Util</th>
+      <th>Util_Tbps</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>2020-01-01</td>
-      <td>47.8</td>
+      <td>01/01/2016</td>
+      <td>0.403441</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2020-01-02</td>
-      <td>49.3</td>
+      <td>02/01/2016</td>
+      <td>0.463106</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2020-01-03</td>
-      <td>51.0</td>
+      <td>03/01/2016</td>
+      <td>0.467094</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2020-01-04</td>
-      <td>NaN</td>
+      <td>04/01/2016</td>
+      <td>0.471649</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2020-01-05</td>
-      <td>NaN</td>
+      <td>05/01/2016</td>
+      <td>0.475212</td>
     </tr>
   </tbody>
 </table>
@@ -78,34 +77,34 @@ df.tail()
     <tr style="text-align: right;">
       <th></th>
       <th>Time</th>
-      <th>Max_Util</th>
+      <th>Util_Tbps</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>361</th>
-      <td>2020-12-27</td>
-      <td>72.3</td>
+      <th>2187</th>
+      <td>27/12/2021</td>
+      <td>2.084657</td>
     </tr>
     <tr>
-      <th>362</th>
-      <td>2020-12-28</td>
-      <td>70.3</td>
+      <th>2188</th>
+      <td>28/12/2021</td>
+      <td>2.076491</td>
     </tr>
     <tr>
-      <th>363</th>
-      <td>2020-12-29</td>
-      <td>69.5</td>
+      <th>2189</th>
+      <td>29/12/2021</td>
+      <td>2.019331</td>
     </tr>
     <tr>
-      <th>364</th>
-      <td>2020-12-30</td>
-      <td>71.5</td>
+      <th>2190</th>
+      <td>30/12/2021</td>
+      <td>2.030922</td>
     </tr>
     <tr>
-      <th>365</th>
-      <td>2020-12-31</td>
-      <td>74.6</td>
+      <th>2191</th>
+      <td>31/12/2021</td>
+      <td>2.036961</td>
     </tr>
   </tbody>
 </table>
@@ -116,25 +115,7 @@ df.tail()
 
 ```python
 #showing count of null values
-df['Max_Util'].isna().sum()
-```
-
-
-
-
-    57
-
-
-
-
-```python
-#it is convenient to assume that days with misisng util values to be at avg util
-df['Max_Util'].fillna((df['Max_Util'].mean()), inplace=True)
-```
-
-
-```python
-df['Max_Util'].isna().sum()
+df['Util_Tbps'].isna().sum()
 ```
 
 
@@ -165,34 +146,34 @@ df.head()
     <tr style="text-align: right;">
       <th></th>
       <th>Time</th>
-      <th>Max_Util</th>
+      <th>Util_Tbps</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>2020-01-01</td>
-      <td>47.800000</td>
+      <td>2016-01-01</td>
+      <td>0.403441</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2020-01-02</td>
-      <td>49.300000</td>
+      <td>2016-02-01</td>
+      <td>0.463106</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2020-01-03</td>
-      <td>51.000000</td>
+      <td>2016-03-01</td>
+      <td>0.467094</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2020-01-04</td>
-      <td>55.380906</td>
+      <td>2016-04-01</td>
+      <td>0.471649</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2020-01-05</td>
-      <td>55.380906</td>
+      <td>2016-05-01</td>
+      <td>0.475212</td>
     </tr>
   </tbody>
 </table>
@@ -214,41 +195,41 @@ df.describe()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Max_Util</th>
+      <th>Util_Tbps</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>count</th>
-      <td>366.000000</td>
+      <td>2192.000000</td>
     </tr>
     <tr>
       <th>mean</th>
-      <td>55.380906</td>
+      <td>1.115121</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>5.823476</td>
+      <td>0.442259</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>43.300000</td>
+      <td>0.403441</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>52.125000</td>
+      <td>0.783865</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>55.250000</td>
+      <td>0.997920</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>56.675000</td>
+      <td>1.487910</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>74.600000</td>
+      <td>2.084657</td>
     </tr>
   </tbody>
 </table>
@@ -278,7 +259,7 @@ df.plot()
 
 
     
-![png](output_11_1.png)
+![png](output_9_1.png)
     
 
 
@@ -297,8 +278,8 @@ plt.style.use("seaborn-whitegrid")
 plt.rc(
     "figure",
     autolayout=True,
-    figsize=(11, 4),
-    titlesize=18,
+    figsize=(20, 8),
+    titlesize=20,
     titleweight='bold',
 )
 plt.rc(
@@ -332,7 +313,7 @@ X = dp.in_sample()  # features for the training data
 
 # split the date index instead of the dataframe directly.
 idx_train, idx_test = train_test_split(
-    y.index, test_size=0.10, shuffle=False,
+    y.index, test_size=0.25, shuffle=False,
 )
 # creat fit, test splits
 X_train, X_test = X.loc[idx_train, :], X.loc[idx_test, :]
@@ -365,7 +346,7 @@ _ = plt.suptitle("Trends")
 
 
     
-![png](output_14_0.png)
+![png](output_12_0.png)
     
 
 
@@ -393,8 +374,8 @@ y_pred_boosted = xgb.predict(X_test) + y_pred
 
 # Plot
 axs = y_train.plot(
-    color='0.25', figsize=(11, 5), subplots=True, sharex=True,
-    title= 'Max_Util'
+    color='0.25', figsize=(20, 8), subplots=True, sharex=True,
+    title= 'Util_Tbps'
 )
 axs = y_test.plot(
     color='0.25', subplots=True, sharex=True, ax=axs,
@@ -410,9 +391,11 @@ for ax in axs: ax.legend([])
 
 
     
-![png](output_15_0.png)
+![png](output_13_0.png)
     
 
 
-    
 
+```python
+
+```
