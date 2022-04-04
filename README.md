@@ -22,17 +22,7 @@ df.head()
 
 
 <div>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -82,6 +72,7 @@ df.tail()
 
 
 <div>
+<style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -93,6 +84,7 @@ df.tail()
     .dataframe thead th {
         text-align: right;
     }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -179,7 +171,7 @@ df.head()
 
 
 <div>
-
+<style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -191,7 +183,7 @@ df.head()
     .dataframe thead th {
         text-align: right;
     }
-
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -241,7 +233,7 @@ df.describe()
 
 
 <div>
-
+<style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -253,7 +245,7 @@ df.describe()
     .dataframe thead th {
         text-align: right;
     }
-
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -455,5 +447,8 @@ for ax in axs: ax.legend([])
 
     
 ![png](output_15_0.png)
+    
+
+
     
 
